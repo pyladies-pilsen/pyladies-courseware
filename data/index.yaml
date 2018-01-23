@@ -1,0 +1,3 @@
+pyladies_data:
+  course_files:
+    - courses/*/index.yaml
