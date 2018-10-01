@@ -1,34 +1,26 @@
-# This Dockerfile creates all-in-one image - for now.sh for example.
-# It's pretty messy - it's for demonstration purposes only.
-# Real deployment should have separate images for each component - frontend and backend.
+FROM alpine:3.8
 
-FROM node:10-stretch AS build_frontend
+RUN apk add build-base mongodb python3 python3-dev libffi-dev openssl-dev nodejs npm nginx
+RUN python3 -m pip install -U pip wheel
+
+ENV NODE_ENV=production
+
 COPY frontend/package.json frontend/package-lock.json /frontend/
 RUN cd /frontend && npm install
-COPY frontend /frontend
+
+COPY backend/requirements.txt /backend/
+RUN python3 -m pip install -r /backend/requirements.txt
+
+COPY frontend /frontend/
 RUN cd /frontend && npm run build
 
-FROM python:3.7-stretch AS build_backend
-RUN python3 -m venv /venv
-RUN /venv/bin/pip install --upgrade pip wheel
-COPY backend/requirements.txt /backend/
-RUN /venv/bin/pip install -r /backend/requirements.txt
 COPY backend /backend/
-RUN /venv/bin/pip install /backend
+RUN python3 -m pip install /backend
 
-FROM debian:stretch
-ENV DEBIAN_FRONTEND=noninteractive ALLOW_DEV_LOGIN=1
-RUN apt-get update
-RUN apt-get install -y nginx-light
-COPY --from=mongo:3.6-jessie /usr/bin/mongod /usr/bin/
-COPY --from=mongo:3.6-jessie /usr/lib /usr/lib
-COPY --from=build_frontend /usr/local /usr/local
-COPY --from=build_frontend /frontend /frontend
-COPY --from=build_backend /usr/local /usr/local
-COPY --from=build_backend /usr/lib /usr/lib
-COPY --from=build_backend /venv /venv
-COPY courses /data/courses
-RUN ldconfig
-COPY nginx.conf docker_entrypoint.sh /
+COPY courses /data/courses/
+COPY docker_demo_entrypoint.sh nginx.conf /
+COPY docker_frontend_entrypoint.sh /bin/cw-frontend
+
 EXPOSE 8000
-CMD ["/docker_entrypoint.sh"]
+
+CMD ["/docker_demo_entrypoint.sh"]
