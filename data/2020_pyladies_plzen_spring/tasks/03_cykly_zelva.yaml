@@ -43,23 +43,13 @@ tasks:
     _Aby byly tvary zhruba stejně veliké, použij pro `n`-úhelník délku strany např. `200/n`_
   
   
-- id: handout3a_08
+- id: handout3a_07
   markdown: |
     Nakresli `n`-úhelník, kde `n` zadá uživatel.
-    
 
+    _Vyzkoušej si například jak bude obrazec vypadat pro velká `n` (např. 95, 360...).
 
-- id: handout3a_09
-  markdown: |
-    Želva umí jen rovné čáry. Jde pomocí rovných čar nakreslit kolečko?
-
-    _Nevíš-li, přeskoč na další projekt a pak se sem vrať._
-
-- id: handout3a_10
-  markdown: |
-    Nakresli pětadevadesátiúhelník.
-
-- id: handout3a_11
+- id: handout3a_08
   markdown: |
     Nakresli takovýto ornament:
 
@@ -67,13 +57,13 @@ tasks:
 
     _Nevíš-li si rady, vezmi pravítko a změř délky jednotlivých čar. Doporučuju začít od středu._
 
-- id: handout3a_12
+- id: handout3a_09
   markdown: |
     Nakresli takovýto ornament:
 
     <img src="/static/tasks/handout3a_images/11_ornament.png" alt="ornament" style="max-width: 100%; max-height: 90px">
 
-- id: handout3a_13
+- id: handout3a_10
   markdown: |
     Nakresli spirálu.
 
@@ -81,23 +71,7 @@ tasks:
 
     _Od ornamentů ke spirále se dostaneš stejným způsobem jako od `n`-úhelníků ke kolečku._
 
-- id: handout3a_14
-  markdown: |
-    Napiš obrázek! Třeba les ze stromů, město z domů, nebe z hvězd,
-    dav ze smajlíků, hradbu z věží, zikkurat ze schodů, ...
-
-    Můžeš použít i nějakou z funkcí modulu `random`.
-
-- id: handout3a_15
+- id: handout3a_11
   markdown: |
     Na sraze jsme nakreslili tři čtverce, každý otočený o 20°.
     Nakresli 18 takových čtverců.
-
-- id: handout3a_16
-  markdown: |
-    Vezmi program z minulé úlohy a dokresli stonek a listy.
-    Je jenom na tobě, jaký budou mít tvar.
-    Piš komentáře a snaž se opakovat pomocí `for`,
-    ne pomocí Ctrl+C Ctrl+V.
-
-    <img src="/static/tasks/handout3a_images/15_kvetina.png" alt="květina" style="max-width: 100%; max-height: 300px">
